@@ -1,28 +1,43 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+const barSeparator = <div className="barSeparator gradient-bg"></div>;
+
+const title = <div>
+	<h1 id="title">Teste</h1>
+	{barSeparator}
+</div>;
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+	constructor(props) {
+    super(props);
+
+    this.state = {
+      email: "",
+      password: "",
+      logged: ""
+    };
   }
+
+  validateForm() {
+    return this.state.email.length > 0 && this.state.password.length > 0;
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+  }
+
+	render() {
+		return (
+			title
+		);
+	}
 }
 
 export default App;
